@@ -20,6 +20,7 @@ module.exports = (client) => {
             case "selectMenus":
               for (const file of assetFiles){
                   const menu = require(`../../assets/${folder}/${file}`);
+                  console.log(menu.data.name, menu)
                   selectMenus.set(menu.data.name, menu);
               }
               break;
