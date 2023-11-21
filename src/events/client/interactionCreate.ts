@@ -12,7 +12,7 @@ module.exports = {
       } catch (error) {
         console.error(error);
         await interaction.reply({
-          content: `There was an error while exicuting this command...`,
+          content: `There was an error while exicuting this command...\nIf this continues please report the bug`,
           ephemeral: true,
         });
       }

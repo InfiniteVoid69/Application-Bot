@@ -2,7 +2,8 @@ const {
   ActionRowBuilder,
   StringSelectMenuBuilder,
   SlashCommandBuilder,
-  StringSelectMenuOptionBuilder
+  StringSelectMenuOptionBuilder,
+  ComponentType,
 } = require("discord.js");
 
 module.exports = {
@@ -12,22 +13,21 @@ module.exports = {
 
   async execute(interaction) {
     const channelMenu = new StringSelectMenuBuilder()
-      .setCustomId('menu1')
+      .setCustomId("menu1")
       .setPlaceholder("*Select the Channel the Application will go in")
       .setOptions(
         new StringSelectMenuOptionBuilder({
-            label: "Option 1",
-            value: "op1"
+          label: "Option 1",
+          value: "op1",
         }),
         new StringSelectMenuOptionBuilder({
-            label: "Option 2",
-            value: "op2"
+          label: "Option 2",
+          value: "op2",
         })
-      )
-
+      );
 
     const row = new ActionRowBuilder().addComponents(channelMenu);
-    await interaction.reply({
+    const message = await interaction.reply({
       components: [row],
     });
   },
