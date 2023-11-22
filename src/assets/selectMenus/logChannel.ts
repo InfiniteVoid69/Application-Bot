@@ -1,11 +1,10 @@
 module.exports = {
   data: {
-    name: `menu1`,
+    name: `logChannel`,
   },
   async execute(interaction, client) {
     await interaction.update({
-      content: `You selected ${interaction.values[0]}`,
-      components: []
+      content: `Log Channel: <#${interaction.values[0]}>`,
     });
   },
 };

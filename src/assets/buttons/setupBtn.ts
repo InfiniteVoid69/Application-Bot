@@ -29,23 +29,6 @@ module.exports = {
         .setMaxValues(1)
         .setPlaceholder('*Select the Channel the logs will go in')
         .setChannelTypes(ChannelType.GuildText)
-    const embed = new EmbedBuilder()
-        .setColor('#2B2D31')
-        .setTitle(`Setup`)
-        .addFields([
-            {
-            name: 'Application Channel',
-            value: `N/A`,
-            inline: false
-            },
-            {
-            name: 'Log Channel',
-            value: `N/A`,
-            inline: false
-            }
-        ])
-        .setTimestamp(Date.now())
-        
         const btnrow = new ActionRowBuilder()
             .addComponents(save, cancel, back);
         const selectrow1 = new ActionRowBuilder()
@@ -57,22 +40,7 @@ module.exports = {
 
         const reply = await interaction.reply({
             embeds: [embed],
-            components: [selectrow1, btnrow]
-        });
-
-        const collector = reply.createMessageComponentCollector({
-            componentType: ComponentType.ChannelSelect,
-            filter: (i) => i.user.id === interaction.user.id,
-        });
-
-        collector.on('collect', (interaction) => {
-            if (!interaction.values.length){
-                return interaction.reply('Nothing to see here');
-            };
-
-            interaction.reply({
-                content: `you have selected ${interaction.values}`
-            });
+            components: [selectrow1, selectrow2, btnrow]
         });
 
     }
